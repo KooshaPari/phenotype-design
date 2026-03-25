@@ -26,7 +26,9 @@
     "lint": "oxlint",
     "format": "oxfmt --write ."
   },
-  "dependencies": {},
+  "dependencies": {
+    "@phenotype/docs": "file:vendor/phenodocs/packages/docs"
+  },
   "devDependencies": {
     "oxlint": "latest",
     "typescript": "latest",

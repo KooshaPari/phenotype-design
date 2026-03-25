@@ -18,3 +18,4 @@ docs/.vitepress/cache/
 .llmignore
 worktrees/
 worktrees/
+vendor/phenodocs/node_modules/

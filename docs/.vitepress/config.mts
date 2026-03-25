@@ -1,81 +1,63 @@
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { createPhenotypeConfig } from '../../vendor/phenodocs/packages/docs/src/config/index.ts'
 
-import { defineConfig } from 'vitepress'
-
-const docsDir = dirname(fileURLToPath(import.meta.url))
-const phenodocsRoot = resolve(docsDir, '../../../phenodocs')
-const phenodocsTheme = resolve(phenodocsRoot, '.vitepress/theme/index.ts')
-
-export default defineConfig({
+export default createPhenotypeConfig({
   title: 'Phenotype Design',
   description: 'Keycap palette — design tokens and style guide',
-  lang: 'en-US',
-  cleanUrls: true,
-  appearance: 'dark',
+  githubRepo: 'phenotype-design',
 
-  vite: {
-    resolve: {
-      alias: {
-        '@phenodocs-theme': phenodocsTheme,
+  nav: [
+    { text: 'Guide', link: '/guide/getting-started' },
+    { text: 'Tokens', link: '/tokens/colors' },
+    { text: 'Components', link: '/components/badges' },
+  ],
+
+  sidebar: [
+    {
+      text: 'Guide',
+      items: [
+        { text: 'Getting Started', link: '/guide/getting-started' },
+        { text: 'Usage', link: '/guide/usage' },
+      ],
+    },
+    {
+      text: 'Tokens',
+      items: [
+        { text: 'Colors', link: '/tokens/colors' },
+        { text: 'Typography', link: '/tokens/typography' },
+      ],
+    },
+    {
+      text: 'Components',
+      items: [
+        { text: 'Badges', link: '/components/badges' },
+        { text: 'Cards & Pipeline', link: '/components/cards' },
+      ],
+    },
+  ],
+
+  overrides: {
+    appearance: 'dark',
+    markdown: {
+      theme: { light: 'github-light', dark: 'vitesse-dark' },
+    },
+    vite: {
+      resolve: {
+        alias: {
+          '@phenotype/docs/theme': resolve(dirname(fileURLToPath(import.meta.url)), '../../vendor/phenodocs/packages/docs/src/theme/index.ts'),
+          '@phenotype/docs/config': resolve(dirname(fileURLToPath(import.meta.url)), '../../vendor/phenodocs/packages/docs/src/config/index.ts'),
+          '@phenotype/docs/utils': resolve(dirname(fileURLToPath(import.meta.url)), '../../vendor/phenodocs/packages/docs/src/utils/index.ts'),
+          '@phenotype/docs/types': resolve(dirname(fileURLToPath(import.meta.url)), '../../vendor/phenodocs/packages/docs/src/types/index.ts'),
+          '@phenotype/docs/css/keycap-palette.css': resolve(dirname(fileURLToPath(import.meta.url)), '../../vendor/phenodocs/packages/docs/src/css/keycap-palette.css'),
+          '@phenotype/docs/css/custom.css': resolve(dirname(fileURLToPath(import.meta.url)), '../../vendor/phenodocs/packages/docs/src/css/custom.css'),
+        },
+      },
+      server: {
+        fs: {
+          allow: [resolve(dirname(fileURLToPath(import.meta.url)), '../../vendor/phenodocs')],
+        },
       },
     },
-    server: {
-      fs: {
-        allow: [phenodocsRoot],
-      },
-    },
-  },
-
-  themeConfig: {
-    siteTitle: 'Phenotype Design',
-
-    nav: [
-      { text: 'Guide', link: '/guide/getting-started' },
-      { text: 'Tokens', link: '/tokens/colors' },
-      { text: 'Components', link: '/components/badges' },
-    ],
-
-    sidebar: [
-      {
-        text: 'Guide',
-        items: [
-          { text: 'Getting Started', link: '/guide/getting-started' },
-          { text: 'Usage', link: '/guide/usage' },
-        ]
-      },
-      {
-        text: 'Tokens',
-        items: [
-          { text: 'Colors', link: '/tokens/colors' },
-          { text: 'Typography', link: '/tokens/typography' },
-        ]
-      },
-      {
-        text: 'Components',
-        items: [
-          { text: 'Badges', link: '/components/badges' },
-          { text: 'Cards & Pipeline', link: '/components/cards' },
-        ]
-      },
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/KooshaPari/phenotype-design' }
-    ],
-
-    footer: {
-      message: 'MIT License',
-      copyright: '© 2025 Phenotype',
-    },
-
-    search: { provider: 'local' },
-
-    outline: { level: [2, 3] },
-  },
-
-  markdown: {
-    lineNumbers: true,
-    theme: { light: 'github-light', dark: 'vitesse-dark' },
   },
 })
