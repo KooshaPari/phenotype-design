@@ -16,3 +16,4 @@ docs/.vitepress/cache/
 .github/copilot-instructions.md
 .claudeignore
 .llmignore
+worktrees/
