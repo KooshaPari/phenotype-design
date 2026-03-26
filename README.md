@@ -1,6 +1,10 @@
 # @phenotype/design
 
-Keycap palette — shared design tokens, VitePress theme, and component styles for the Phenotype ecosystem.
+> **Archived.** See [ARCHIVED.md](ARCHIVED.md) for migration details.
+
+## Status
+
+- Archived on 2026-03-25
 
 ## Install
 
