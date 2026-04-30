@@ -177,7 +177,7 @@ uv pip install <package>
 
 **Full Production-Grade Implementation:**
 - NO minimal implementations or MVPs
-- NO "we'll add this later" placeholder code
+- NO "we'll add this later" temporary scaffolding code
 - Every feature: production-ready, fully tested, documented
 - Complete error handling, edge cases, logging
 - Full test coverage (unit + integration where applicable)
@@ -242,7 +242,7 @@ docs/
 - Reuse existing layers instead of bypassing them
 - Keep changes minimal, composable, and driven by tests
 - Proactively decompose files approaching 350 lines
-- Never introduce real secrets; use env vars and placeholders
+- Never introduce real secrets; use env vars and dummy values
 - Prefer consolidated tools over direct DB/HTTP where adapters exist
 - Match existing coding style, respect typing and logging conventions
 
